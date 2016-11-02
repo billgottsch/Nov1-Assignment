@@ -99,21 +99,20 @@ console.assert(isVowel("E") === true);
  //where I ask it if(text ==== NaN) it moves on with the rest of the function
  //else - it stops and spits out the number.
 
-function rovarspraket(text){
-    var string = text.toLowerCase();
-    var vowels = ["a", "e", "i", "o", "u", " "];
-    var y = "";
-    for (i = 0; i < string.length; i++) {
-       var current = string.charAt(i);
-      if (vowels.indexOf(current) != -1) {
-          y = (y + (current));
-      } else {
-          y = (y + (current + "o" + current));
-      }
-    }
-    return y;
-}
 
+  function rovarspraket(words) {
+      var output = '';
+      words.toString().split('').forEach(function(character) {
+      if (isNaN(parseInt(character)) === false) {
+          output = output + character;
+      } else if (isVowel(character) === true) {
+          output = output + character;
+      } else {
+          output = output + character + 'o' + character;
+      }
+    })
+      return output;
+  }
 console.assert(rovarspraket("a") === "a")
 console.assert(rovarspraket("b") === "bob")
 console.assert(rovarspraket("cat") === "cocatot")
